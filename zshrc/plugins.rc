@@ -1,0 +1,58 @@
+# history-substring-search
+# set -o vi
+# bindkey -v
+# fzf 不要使用包管理器安装，而是手动git clone 运行脚本安装
+# CTR+R 这个安装fzf的时候,选择use key bindings
+# 但是不选用fzf-autocompletes, 使用fzf-tab更好
+# bindkey '^R' history-incremental-search-backward
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
+bindkey '^P' history-substring-search-up
+bindkey '^N' history-substring-search-down
+
+# zsh-vi-mode
+VIM_MODE_ESC_PREFIXED_WANTED='^?^Hbdfhul.g'  # Default is '^?^Hbdf.g'
+bindkey -rpM viins '^[^['
+VIM_MODE_VICMD_KEY='^D'
+
+
+# easy-motion :space to trigger easy-motion mode 
+# b, B, w, W, e, E, ge, gE, j, J, k, K f, F, t, T, c (camelCase).
+bindkey -M vicmd ' ' vi-easy-motion
+source ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-easy-motion/easy_motion.plugin.zsh
+
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
+# fzf-tab: tab补全
+# disable sort when completing `git checkout`
+zstyle ':completion:*:git-checkout:*' sort false
+# set descriptions format to enable group support
+zstyle ':completion:*:descriptions' format '[%d]'
+# set list-colors to enable filename colorizing
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# preview directory's content with exa when completing cd
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
+# switch group using `,` and `.`
+zstyle ':fzf-tab:*' switch-group ',' '.'
+
+# fzf-fasd: 好用的z命令，快速进入历史目录
+export FZF_TMUX_HEIGHT='40%'    # default height is 40%
+export FZF_DEFAULT_OPTS='--height 80%'
+export FZF_FASD_OPTS='--prompt "fasd_cd> "'
+
+
+# zah-auto-notify: 长时间cmd完成，自动通知; 20s
+export AUTO_NOTIFY_THRESHOLD=20
+
+# calc: 计算器
+# https://github.com/arzzen/calc.plugin.zsh
+
+
+## vscode
+# defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false         # For VS Code
+# defaults write com.microsoft.VSCodeInsiders ApplePressAndHoldEnabled -bool false # For VS Code Insider
+# defaults write com.visualstudio.code.oss ApplePressAndHoldEnabled -bool false    # For VS Codium
+# defaults delete -g ApplePressAndHoldEnabled
+# defaults write 'com.microsoft.VSCode' ApplePressAndHoldEnabled -bool false

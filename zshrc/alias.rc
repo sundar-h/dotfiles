@@ -1,0 +1,22 @@
+export TERM=xterm-256color
+export GIT_EDITOR="${EDITOR}"
+
+# alias du='dust'
+# alias df='duf'
+# alias ps='procs'
+# alias dig='dog'
+# # alias sed='sd'
+# alias awk='gawk'
+
+alias vi='lvim'
+alias vim='lvim'
+export EDITOR='lvim'
+alias cat='ccat'
+alias st='export https_proxy=http://172.16.1.135:3128 http_proxy=http://172.16.1.135:3128'
+alias unst='unset http_proxy https_proxy'
+
+
+function clion() {
+  open $1 -a Clion
+}
+

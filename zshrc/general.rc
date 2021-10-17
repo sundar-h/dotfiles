@@ -1,0 +1,17 @@
+# History config
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE=~/.zsh_history
+setopt append_history
+setopt share_history
+setopt long_list_jobs
+setopt hist_expire_dups_first
+setopt hist_ignore_dups
+setopt hist_ignore_all_dups
+setopt hist_ignore_space
+setopt hist_find_no_dups
+setopt hist_reduce_blanks
+setopt hist_verify
+setopt hist_no_store
+setopt interactivecomments
+zstyle ':completion:*' rehash true
