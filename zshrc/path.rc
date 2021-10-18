@@ -1,9 +1,10 @@
 export GO111MODULE=on
 export GOPATH=$HOME/data/go
-export PATH=/usr/local/go/bin:$GOPATH/bin:$PATH
 export GOPRIVATE=gitlab.*.sensetime.com
 export GOPROXY=https://goproxy.cn
 export PROTOC_INSTALL=$HOME/data/go/bin/protoc-3.5.1-osx-x86_64
+export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/go/bin:$GOPATH/bin:$PATH
 export PATH=$PROTOC_INSTALL/bin:$PATH/bin
 export PATH=$PATH:$HOME/.local/bin
 export PATH="/usr/local/opt/node@14/bin:$PATH"
