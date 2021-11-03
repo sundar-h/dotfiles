@@ -117,3 +117,7 @@ source $HOME/data/config/zshrc/sensetime.rc
 source $HOME/data/config/zshrc/plugins.rc
 source $HOME/data/config/zshrc/alias.rc
 source $HOME/.cargo/env
+
+# Wasmer
+export WASMER_DIR="/Users/sanghaifa/.wasmer"
+[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
