@@ -24,3 +24,8 @@ function clion() {
 function goland() {
   open $1 -a Goland
 }
+
+function vm() {
+  WORKDIR=${PWD/$HOME/\$HOME}
+  ssh couldbe@10.0.0.3 -t "cd $WORKDIR; bash --login"
+}

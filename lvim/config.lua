@@ -169,8 +169,8 @@ end
 -- lvim.format_on_save = true
 -- lvim.lang.javascript.linters = { { exe = "eslint_d" } }
 -- exe value can be "gofmt", "goimports", or "gofumpt"
-lvim.lang.go.formatters = {{ exe = "goimports" }}
-lvim.lang.rust.formatters = { { exe = "rustfmt" } }
+-- lvim.lang.go.formatters = {{ exe = "goimports" }}
+-- lvim.lang.rust.formatters = { { exe = "rustfmt" } }
 lvim.lsp.override = { "rust" }
 
 vim.opt.backup = false -- creates a backup file

@@ -1,4 +1,7 @@
 **/target/
-.DS_Store
-.idea/
-_obj/
+**/.DS_Store
+**/.idea/
+**/_obj/
+*.so
+**/dist/
+**/build/
