@@ -1,0 +1,4 @@
+# https://cloud.tencent.com/developer/article/1383844
+# valgrind 默认是定时使用快照,如果获取的时间间隔比较大，则可能记录的信息不全。这个时候，我们可以指定--time-unit=B参数来解决这个问题
+# 如果我们要记录每次堆变化的过程，则可以增加参数--detailed-freq=1
+alias valgrind='valgrind --tool=massif --time-unit=B --detailed-freq'

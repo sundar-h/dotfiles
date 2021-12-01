@@ -20,7 +20,7 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 -- unmap a default keymapping
 lvim.keys.normal_mode["<C-Up>"] = ""
 -- edit a default keymapping
-lvim.keys.normal_mode["<C-q>"] = ":q<cr>"
+-- lvim.keys.normal_mode["<C-q>"] = ":q<cr>"
 -- remove keymappings set by Lunarvim
 lvim.keys.normal_mode["<Tab>"] = nil
 lvim.keys.normal_mode["<S-Tab>"] = nil
@@ -28,69 +28,21 @@ lvim.keys.normal_mode["U"] = "<C-r>"
 lvim.line_wrap_cursor_movement = true
 
 -- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
--- lvim.builtin.telescope.on_config_done = function()
---   local actions = require "telescope.actions"
-  -- for input mode
-  -- lvim.builtin.telescope.defaults.mappings.i["<C-j>"] = actions.move_selection_next
-  -- lvim.builtin.telescope.defaults.mappings.i["<C-k>"] = actions.move_selection_previous
-  -- lvim.builtin.telescope.defaults.mappings.i["<C-n>"] = actions.cycle_history_next
-  -- lvim.builtin.telescope.defaults.mappings.i["<C-p>"] = actions.cycle_history_prev
-  -- -- for normal mode
-  -- lvim.builtin.telescope.defaults.mappings.n["<C-j>"] = actions.move_selection_next
-  -- lvim.builtin.telescope.defaults.mappings.n["<C-k>"] = actions.move_selection_previous
--- end
-
-
---   = {
---   ["<C-d>"] = cmp.mapping.scroll_docs(-4),
---   ["<C-f>"] = cmp.mapping.scroll_docs(4),
---   -- TODO: potentially fix emmet nonsense
---   ["<Tab>"] = cmp.mapping(function()
---     if cmp.visible() then
---       cmp.select_next_item()
---     elseif luasnip.expandable() then
---       luasnip.expand()
---     elseif inside_snippet() and seek_luasnip_cursor_node() and luasnip.jumpable() then
---       luasnip.jump(1)
---     elseif check_backspace() then
---       vim.fn.feedkeys(T "<Tab>", "n")
---     elseif is_emmet_active() then
---       return vim.fn["cmp#complete"]()
---     else
---       vim.fn.feedkeys(T "<Tab>", "n")
---     end
---   end, {
---       "i",
---       "s",
---     }),
---   ["<S-Tab>"] = cmp.mapping(function(fallback)
---     if cmp.visible() then
---       cmp.select_prev_item()
---     elseif inside_snippet() and luasnip.jumpable(-1) then
---       luasnip.jump(-1)
---     else
---       fallback()
---     end
---   end, {
---       "i",
---       "s",
---     }),
-
---   ["<C-Space>"] = cmp.mapping.complete(),
---   ["<C-e>"] = cmp.mapping.close(),
---   ["<CR>"] = cmp.mapping(function(fallback)
---     if cmp.visible() and cmp.confirm(lvim.builtin.cmp.confirm_opts) then
---       return
---     end
-
---     if inside_snippet() and seek_luasnip_cursor_node() and luasnip.jumpable() then
---       if not luasnip.jump(1) then
---         fallback()
---       end
---     else
---       fallback()
---     end
---   end),
+-- we use protected-mode (pcall) just in case the plugin wasn't loaded yet.
+-- local _, actions = pcall(require, "telescope.actions")
+-- lvim.builtin.telescope.defaults.mappings = {
+--   -- for input mode
+--   i = {
+--     ["<C-j>"] = actions.move_selection_next,
+--     ["<C-k>"] = actions.move_selection_previous,
+--     ["<C-n>"] = actions.cycle_history_next,
+--     ["<C-p>"] = actions.cycle_history_prev,
+--   },
+--   -- for normal mode
+--   n = {
+--     ["<C-j>"] = actions.move_selection_next,
+--     ["<C-k>"] = actions.move_selection_previous,
+--   },
 -- }
 
 -- Use which-key to add extra bindings with the leader-key prefix
@@ -104,26 +56,17 @@ lvim.builtin.which_key.mappings["t"] = {
   l = { "<cmd>Trouble loclist<cr>", "LocationList" },
   w = { "<cmd>Trouble lsp_workspace_diagnostics<cr>", "Diagnostics" },
 }
-lvim.builtin.which_key.mappings["t"] = {
-  name = "Diagnostics",
-  t = { "<cmd>TroubleToggle<cr>", "trouble" },
-  w = { "<cmd>TroubleToggle lsp_workspace_diagnostics<cr>", "workspace" },
-  d = { "<cmd>TroubleToggle lsp_document_diagnostics<cr>", "document" },
-  q = { "<cmd>TroubleToggle quickfix<cr>", "quickfix" },
-  l = { "<cmd>TroubleToggle loclist<cr>", "loclist" },
-  r = { "<cmd>TroubleToggle lsp_references<cr>", "references" },
-}
 
 -- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
-lvim.builtin.lualine.active = true
-lvim.builtin.dap.active = true
 lvim.builtin.dashboard.active = true
 lvim.builtin.terminal.active = true
-lvim.builtin.autopairs.active = true
-lvim.builtin.bufferline.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.show_icons.git = 0
+lvim.builtin.lualine.active = true
+lvim.builtin.dap.active = true
+lvim.builtin.autopairs.active = true
+lvim.builtin.bufferline.active = true
 lvim.builtin.cmp.allow_prefix_unmatch = false
 lvim.builtin.cmp.autocomplete = true
 lvim.builtin.cmp.debug = false
@@ -131,21 +74,46 @@ lvim.builtin.telescope.active = true
 lvim.builtin.telescope.defaults.layout_config.width = 0.95
 lvim.builtin.telescope.defaults.layout_config.preview_cutoff = 75
 
-
 -- if you don't want all the parsers change this to a table of the ones you want
-lvim.builtin.treesitter.ensure_installed = "maintained"
+lvim.builtin.treesitter.ensure_installed = {
+  "bash",
+  "c",
+  "javascript",
+  "json",
+  "lua",
+  "python",
+  "typescript",
+  "css",
+  "rust",
+  "java",
+  "yaml",
+}
+
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
 
+-- generic LSP settings
+
+-- ---@usage disable automatic installation of servers
+-- lvim.lsp.automatic_servers_installation = false
+
+-- ---@usage Select which servers should be configured manually. Requires `:LvimCacheRest` to take effect.
+-- See the full default list `:lua print(vim.inspect(lvim.lsp.override))`
+-- vim.list_extend(lvim.lsp.override, { "pyright" })
+
+-- ---@usage setup a server -- see: https://www.lunarvim.org/languages/#overriding-the-default-configuration
+-- local opts = {} -- check the lspconfig documentation for a list of all possible options
+-- require("lvim.lsp.manager").setup("pylsp", opts)
+
 -- you can set a custom on_attach function that will be used for all the language servers
 -- See <https://github.com/neovim/nvim-lspconfig#keybindings-and-completion>
-lvim.lsp.on_attach_callback = function(client, bufnr)
-  local function buf_set_option(...)
-    vim.api.nvim_buf_set_option(bufnr, ...)
-  end
-  --Enable completion triggered by <c-x><c-o>
-  buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
-end
+-- lvim.lsp.on_attach_callback = function(client, bufnr)
+--   local function buf_set_option(...)
+--     vim.api.nvim_buf_set_option(bufnr, ...)
+--   end
+--   --Enable completion triggered by <c-x><c-o>
+--   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
+-- end
 -- you can overwrite the null_ls setup table (useful for setting the root_dir function)
 lvim.lsp.null_ls.setup = {
   root_dir = require("lspconfig").util.root_pattern("Makefile", ".git", "node_modules"),
@@ -162,62 +130,46 @@ lvim.lsp.null_ls.setup.root_dir = function(fname)
   end
 end
 
--- set a formatter if you want to override the default lsp one (if it exists)
+-- -- set a formatter, this will override the language server formatting capabilities (if it exists)
+-- local formatters = require "lvim.lsp.null-ls.formatters"
+-- formatters.setup {
+--   { exe = "black", filetypes = { "python" } },
+--   { exe = "isort", filetypes = { "python" } },
+--   {
+--     exe = "prettier",
+--     ---@usage arguments to pass to the formatter
+--     -- these cannot contain whitespaces, options such as `--line-width 80` become either `{'--line-width', '80'}` or `{'--line-width=80'}`
+--     args = { "--print-with", "100" },
+--     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
+--     filetypes = { "typescript", "typescriptreact" },
+--   },
+-- }
 
--- generic LSP settings
--- lvim.lang.javascript.formatters = { { exe = "prettier", args = { "--print-with", "100" } } }
--- lvim.format_on_save = true
--- lvim.lang.javascript.linters = { { exe = "eslint_d" } }
--- exe value can be "gofmt", "goimports", or "gofumpt"
--- lvim.lang.go.formatters = {{ exe = "goimports" }}
--- lvim.lang.rust.formatters = { { exe = "rustfmt" } }
-lvim.lsp.override = { "rust" }
-
-vim.opt.backup = false -- creates a backup file
-vim.opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
-vim.opt.cmdheight = 2 -- more space in the neovim command line for displaying messages
-vim.opt.colorcolumn = "99999" -- fixes indentline for now
-vim.opt.completeopt = { "menuone", "noselect" }
-vim.opt.conceallevel = 0 -- so that `` is visible in markdown files
-vim.opt.fileencoding = "utf-8" -- the encoding written to a file
-vim.opt.foldmethod = "manual" -- folding set to "expr" for treesitter based folding
-vim.opt.foldexpr = "" -- set to "nvim_treesitter#foldexpr()" for treesitter based folding
-vim.opt.guifont = "monospace:h17" -- the font used in graphical neovim applications
-vim.opt.hidden = true -- required to keep multiple buffers and open multiple buffers
-vim.opt.hlsearch = true -- highlight all matches on previous search pattern
-vim.opt.ignorecase = true -- ignore case in search patterns
-vim.opt.mouse = "a" -- allow the mouse to be used in neovim
-vim.opt.pumheight = 10 -- pop up menu height
-vim.opt.showmode = false -- we don't need to see things like -- INSERT -- anymore
-vim.opt.showtabline = 2 -- always show tabs
-vim.opt.smartcase = true -- smart case
-vim.opt.smartindent = true -- make indenting smarter again
-vim.opt.splitbelow = true -- force all horizontal splits to go below current window
-vim.opt.splitright = true -- force all vertical splits to go to the right of current window
-vim.opt.swapfile = false -- creates a swapfile
-vim.opt.termguicolors = true -- set term gui colors (most terminals support this)
-vim.opt.timeoutlen = 100 -- time to wait for a mapped sequence to complete (in milliseconds)
-vim.opt.title = true -- set the title of window to the value of the titlestring
-vim.opt.titlestring = "%<%F%=%l/%L - nvim" -- what the title of the window will be set to
--- vim.opt.undodir = CACHE_PATH .. "/undo" -- set an undo directory
-vim.opt.undofile = true -- enable persistent undo
-vim.opt.updatetime = 300 -- faster completion
-vim.opt.writebackup = false -- if a file is being edited by another program (or was written to file while editing with another program) it is not allowed to be edited
-vim.opt.expandtab = true -- convert tabs to spaces
-vim.opt.shiftwidth = 2 -- the number of spaces inserted for each indentation
-vim.opt.tabstop = 2 -- insert 2 spaces for a tab
-vim.opt.cursorline = true -- highlight the current line
-vim.opt.number = true -- set numbered lines
-vim.opt.relativenumber = false -- set relative numbered lines
-vim.opt.numberwidth = 4 -- set number column width to 2 {default 4}
-vim.opt.signcolumn = "yes" -- always show the sign column otherwise it would shift the text each time
--- vim.opt.wrap = false -- display lines as one long line
-vim.opt.spell = false
-vim.opt.spelllang = "en"
-vim.opt.scrolloff = 8 -- is one of my fav
-vim.opt.sidescrolloff = 8
+-- -- set additional linters
+-- local linters = require "lvim.lsp.null-ls.linters"
+-- linters.setup {
+--   { exe = "flake8", filetypes = { "python" } },
+--   {
+--     exe = "shellcheck",
+--     ---@usage arguments to pass to the formatter
+--     -- these cannot contain whitespaces, options such as `--line-width 80` become either `{'--line-width', '80'}` or `{'--line-width=80'}`
+--     args = { "--severity", "warning" },
+--   },
+--   {
+--     exe = "codespell",
+--     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
+--     filetypes = { "javascript", "python" },
+--   },
+-- }
 
 -- Additional Plugins
+-- lvim.plugins = {
+--     {"folke/tokyonight.nvim"},
+--     {
+--       "folke/trouble.nvim",
+--       cmd = "TroubleToggle",
+--     },
+-- }
 lvim.lsp.override = { "rust" }
 lvim.plugins = {
   {"lunarvim/colorschemes"},
@@ -363,10 +315,10 @@ lvim.plugins = {
     end,
 },
   -- nvim-ts-context-commentstring: commentstring option based on the cursor location
-  {
-    "JoosepAlviste/nvim-ts-context-commentstring",
-    event = "BufRead",
-},
+  -- {
+    -- "JoosepAlviste/nvim-ts-context-commentstring",
+    -- event = "BufRead",
+-- },
   -- nvim-ts-rainbow: rainbow parentheses
   {
     "p00f/nvim-ts-rainbow",
@@ -570,22 +522,70 @@ lvim.plugins = {
   {
     "simrat39/rust-tools.nvim",
     config = function()
-      local opts = {
-        server = {
-          cmd = { vim.fn.stdpath "data" .. "/lspinstall/rust/rust-analyzer" },
-          -- on_attach is a callback called when the language server attachs to the buffer
-          -- on_attach = require("lspconfig").common_on_attach,
-          -- on_init = require("lspconfig").common_on_init,
+      require("rust-tools").setup({
+        tools = {
+          autoSetHints = true,
+          hover_with_actions = true,
+          runnables = {
+            use_telescope = true,
+          },
         },
-        }
-      require("rust-tools").setup(opts)
+        server = {
+          cmd = { vim.fn.stdpath "data" .. "/lsp_servers/rust/rust-analyzer" },
+          on_attach = require("lvim.lsp").common_on_attach,
+          on_init = require("lvim.lsp").common_on_init,
+        },
+      })
     end,
     ft = { "rust", "rs" },
   },
-
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 -- lvim.autocommands.custom_groups = {
 --   { "BufWinEnter", "*.lua", "setlocal ts=8 sw=8" },
 -- }
+
+vim.opt.backup = false -- creates a backup file
+vim.opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
+vim.opt.cmdheight = 2 -- more space in the neovim command line for displaying messages
+vim.opt.colorcolumn = "99999" -- fixes indentline for now
+vim.opt.completeopt = { "menuone", "noselect" }
+vim.opt.conceallevel = 0 -- so that `` is visible in markdown files
+vim.opt.fileencoding = "utf-8" -- the encoding written to a file
+vim.opt.foldmethod = "manual" -- folding set to "expr" for treesitter based folding
+vim.opt.foldexpr = "" -- set to "nvim_treesitter#foldexpr()" for treesitter based folding
+vim.opt.guifont = "monospace:h17" -- the font used in graphical neovim applications
+vim.opt.hidden = true -- required to keep multiple buffers and open multiple buffers
+vim.opt.hlsearch = true -- highlight all matches on previous search pattern
+vim.opt.ignorecase = true -- ignore case in search patterns
+vim.opt.mouse = "a" -- allow the mouse to be used in neovim
+vim.opt.pumheight = 10 -- pop up menu height
+vim.opt.showmode = false -- we don't need to see things like -- INSERT -- anymore
+vim.opt.showtabline = 2 -- always show tabs
+vim.opt.smartcase = true -- smart case
+vim.opt.smartindent = true -- make indenting smarter again
+vim.opt.splitbelow = true -- force all horizontal splits to go below current window
+vim.opt.splitright = true -- force all vertical splits to go to the right of current window
+vim.opt.swapfile = false -- creates a swapfile
+vim.opt.termguicolors = true -- set term gui colors (most terminals support this)
+vim.opt.timeoutlen = 100 -- time to wait for a mapped sequence to complete (in milliseconds)
+vim.opt.title = true -- set the title of window to the value of the titlestring
+vim.opt.titlestring = "%<%F%=%l/%L - nvim" -- what the title of the window will be set to
+-- vim.opt.undodir = CACHE_PATH .. "/undo" -- set an undo directory
+vim.opt.undofile = true -- enable persistent undo
+vim.opt.updatetime = 300 -- faster completion
+vim.opt.writebackup = false -- if a file is being edited by another program (or was written to file while editing with another program) it is not allowed to be edited
+vim.opt.expandtab = true -- convert tabs to spaces
+vim.opt.shiftwidth = 2 -- the number of spaces inserted for each indentation
+vim.opt.tabstop = 2 -- insert 2 spaces for a tab
+vim.opt.cursorline = true -- highlight the current line
+vim.opt.number = true -- set numbered lines
+vim.opt.relativenumber = false -- set relative numbered lines
+vim.opt.numberwidth = 4 -- set number column width to 2 {default 4}
+vim.opt.signcolumn = "yes" -- always show the sign column otherwise it would shift the text each time
+-- vim.opt.wrap = false -- display lines as one long line
+vim.opt.spell = false
+vim.opt.spelllang = "en"
+vim.opt.scrolloff = 8 -- is one of my fav
+vim.opt.sidescrolloff = 8
