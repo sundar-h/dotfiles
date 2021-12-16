@@ -4,5 +4,13 @@ alias 103='ssh root@10.151.3.103'
 alias 86='ssh root@10.151.3.86' # Viperlite123$%^
 alias 94='ssh root@10.151.3.94'
 # 函数计算测试环境
-alias 24='ssh root@10.151.157.24' # ST#NBL#2020  函数计算
+# alias 24='ssh root@10.151.157.24' # ST#NBL#2020  函数计算
+alias 24='ssh root@10.151.157.24 -t "cd /home/rundir/lambda; sh --login"'  # ST#NBL#2020  函数计算
 
+
+
+
+# 跳板机
+# ssh -p 52222 root@10.111.33.6 
+# Foundery ota-manager
+# ssh root@10.111.35.23: centos

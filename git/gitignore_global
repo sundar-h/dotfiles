@@ -3,5 +3,7 @@
 **/.idea/
 **/_obj/
 *.so
+*.dylib
 **/dist/
 **/build/
+**/node_modules/

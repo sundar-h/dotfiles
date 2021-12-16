@@ -1,0 +1,129 @@
+{
+  // vim
+  "vim.easymotion": true,
+  "vim.incsearch": true,
+  "vim.useSystemClipboard": true,
+  "vim.useCtrlKeys": true,
+  "vim.hlsearch": true,
+  "vim.insertModeKeyBindings": [
+    {
+      "before": [
+        "j",
+        "j"
+      ],
+      "after": [
+        "<Esc>"
+      ]
+    }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "<leader>",
+        "d"
+      ],
+      "after": [
+        "d",
+        "d"
+      ]
+    },
+    {
+      "before": [
+        "<C-n>"
+      ],
+      "commands": [
+        ":nohl"
+      ]
+    }
+  ],
+  "vim.leader": "<space>",
+  "vim.handleKeys": {
+    "<C-a>": false,
+    "<C-f>": false
+  },
+  "workbench.iconTheme": "material-icon-theme",
+  // Rust
+  "rust-analyzer.rustfmt.enableRangeFormatting": true,
+  "rust-analyzer.updates.channel": "nightly",
+  "rust-analyzer.updates.askBeforeDownload": true,
+  "rust-analyzer.experimental.procAttrMacros": true,
+  "rust-analyzer.cargo.allFeatures": true,
+  "rust-analyzer.hoverActions.references": true,
+  "rust-analyzer.lens.methodReferences": true,
+  "rust-analyzer.lens.references": true,
+  "rust-analyzer.assist.allowMergingIntoGlobImports": true,
+  "rust-analyzer.checkOnSave.command": "clippy",
+  "rust-analyzer.debug.openDebugPane": true,
+  "rust-analyzer.trace.server": "off",
+  // settings-sync
+  "sync.gist": "03ed2e1db590002729afbc6180fba4d6",
+  "sync.autoDownload": true,
+  "sync.autoUpload": true,
+  "sync.removeExtensions": true,
+  "cSpell.userWords": [
+    "libloading",
+    "MQTT",
+    "paho"
+  ],
+  // golang
+  "go.toolsManagement.autoUpdate": true,
+  // javascript
+  "javascript.suggest.completeFunctionCalls": true,
+  "typescript.suggest.completeFunctionCalls": true,
+  // editer
+  "editor.formatOnSave": true,
+  "editor.fontLigatures": true,
+  "editor.wordBasedSuggestionsMode": "allDocuments",
+  "editor.wordBasedSuggestions": true,
+  "editor.fontSize": 14,
+  "editor.fontWeight": "normal",
+  // 使用插件highlight-icemode 的选中高亮插件, 关闭默认的
+  "editor.selectionHighlight": false,
+  "editor.suggest.preview": true,
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": true,
+    "strings": true
+  },
+  "testExplorer.addToEditorContextMenu": true,
+  "material-icon-theme.folders.theme": "specific",
+  "mdmath.theme": "minimal",
+  "terminal.explorerKind": "external",
+  "terminal.integrated.automationShell.osx": "/bin/zsh",
+  "editor.fontFamily": "Fira Code, Menlo, Monaco, 'Courier New', monospace,Meslo LG L for Powerline",
+  "terminal.integrated.fontFamily": "Meslo LG L for Powerline",
+  "terminal.external.osxExec": "iTerm.app",
+  "editor.minimap.enabled": false,
+  "files.autoSave": "afterDelay",
+  "mdmath.autosave": true,
+  "python.insidersChannel": "daily",
+  // background
+  "background.enabled": true,
+  "background.useFront": true,
+  "background.useDefault": true,
+  "background.customImages": [
+    "/Users/mac/Pictures/t015da4a4741eefa8e6.jpeg",
+    "/Users/mac/Pictures/t0129b8a604c3b433c8.jpeg",
+  ],
+  "background.style": {
+    "content": "''",
+    "pointer-events": "none",
+    "position": "absolute",
+    "z-index": "99999",
+    "width": "100%",
+    "height": "100%",
+    "background-position": "center",
+    "background-repeat": "no-repeat",
+    "background-size": "100%,100%",
+    "opacity": 0.1 // 透明度
+  },
+  // "Advanced New File"
+  "newFile.defaultBaseFileName": "newFile",
+  "newFile.relativeTo": "file", // "root" or "project"
+  "newFile.defaultFileExtension": ".ts",
+  "newFile.rootDirectory": "~",
+  "newFile.showPathRelativeTo": "root", // "project" or "none"
+  "newFile.expandBraces": false, // setting to true will allow for creating multiple files such as `new-folder/{file1,file2}.js`
+  // "debug.internalConsoleOptions": "neverOpen",
+  "output.smartScroll.enabled": false,
+}
