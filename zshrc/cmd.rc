@@ -1,0 +1,19 @@
+
+#!/bin/bash
+
+function typ() {
+  open $1 -a Typora
+}
+
+
+
+function clean() {
+  # 清理当前日志
+  # * 开启&关闭日志模式（可选择输出到表或文件中）：
+  # > SET GLOBAL log_output = 'FILE';  SET GLOBAL general_log = 'ON';   //日志开启（日志输出到文件）
+  # > SET GLOBAL log_output = 'FILE';  SET GLOBAL general_log = 'OFF';  //# 日志关闭
+  # 或者
+  # > SET GLOBAL log_output = 'TABLE'; SET GLOBAL general_log = 'ON';   //日志开启（日志输出到表：mysql.general_log）
+  # > SET GLOBAL log_output = 'TABLE'; SET GLOBAL general_log = 'OFF';  //日志关闭
+  tail -f /var/log/mariadb/mariadb.log
+}
