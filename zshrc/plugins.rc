@@ -18,7 +18,7 @@ VIM_MODE_VICMD_KEY='^D'
 
 # easy-motion :space to trigger easy-motion mode 
 # b, B, w, W, e, E, ge, gE, j, J, k, K f, F, t, T, c (camelCase).
-bindkey -M vicmd ' ' vi-easy-motion
+# bindkey -M vicmd ' ' vi-easy-motion
 # source ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-easy-motion/easy_motion.plugin.zsh
 
 # fzf

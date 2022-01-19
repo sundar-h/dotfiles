@@ -1,17 +1,9 @@
-[url "https://gitlab"]
-	insteadOf = git://gitlab
 [user]
 	name = sanghaifa
 	email = sanghaifa@sensetime.com
-[core]
-	editor = code --wait
-[diff]
-	tool = vscode
-[difftool "vscode"]
-	cmd = code --wait --diff $LOCAL $REMOTE
-[merge]
-	tool = vscode
-[mergetool "vscode"]
-	cmd = code --wait $MERGED
 [pull]
 	ff = only
+[url "git@gitlab.bj.sensetime.com:"]
+	insteadOf = https://gitlab.bj.sensetime.com
+[url "git@gitlab.sz.sensetime.com:"]
+	insteadOf = https://gitlab.sz.sensetime.com

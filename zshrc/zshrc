@@ -80,7 +80,7 @@ zsh-vim-mode
 ############  End ############  
 extract 
 zsh-history-substring-search
-zsh-easy-motion
+# zsh-easy-motion
 )
 
 source $ZSH/oh-my-zsh.sh

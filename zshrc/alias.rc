@@ -20,6 +20,10 @@ function clion() {
   open $1 -a Clion
 }
 
+function code() {
+  code-insiders $1
+}
+
 
 function goland() {
   open $1 -a Goland
