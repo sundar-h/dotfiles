@@ -118,6 +118,7 @@ source $HOME/data/config/zshrc/sensetime.rc
 source $HOME/data/config/zshrc/plugins.rc
 source $HOME/data/config/zshrc/alias.rc
 source $HOME/data/config/zshrc/rust.rc
+source $HOME/data/config/zshrc/issue.rc
 source $HOME/.cargo/env
 
 # Wasmer
