@@ -8,9 +8,9 @@ export GIT_EDITOR="${EDITOR}"
 # # alias sed='sd'
 # alias awk='gawk'
 
-alias vi='lvim'
-alias vim='lvim'
-export EDITOR='lvim'
+alias vi='nvim'
+alias vim='nvim'
+export EDITOR='nvim'
 alias cat='ccat'
 alias st='export https_proxy=http://172.16.1.135:3128 http_proxy=http://172.16.1.135:3128'
 alias unst='unset http_proxy https_proxy'
@@ -29,8 +29,18 @@ function goland() {
   open $1 -a Goland
 }
 
+function webstorm() {
+  open $1 -a WebStorm
+}
+
 function vm() {
   WORKDIR=${PWD/$HOME/\$HOME}
   # ssh couldbe@10.0.0.3 -t "cd $WORKDIR; bash --login"
   ssh couldbe@10.0.0.3 -t "cd $WORKDIR; zsh --login"
 }
+
+function dev() {
+    rm local_build
+    name=`basename ${PWD}`
+    ln -s ${HOME}/data/sensetime/build/${name} local_build
+  }
