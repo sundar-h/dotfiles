@@ -1,3 +1,4 @@
+# export GIT_LFS_SKIP_SMUDGE=1
 export GO111MODULE=on
 export GOPATH=$HOME/go
 export GOPRIVATE=gitlab.*.sensetime.com
