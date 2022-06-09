@@ -44,7 +44,7 @@ function vm() {
     bash local_build/script/run.sh
     ;;
   b | build)
-    rm local_build
+    rm local_build || true
     name=`basename ${PWD}`
     ln -s ${HOME}/data/sensetime/build/${name} local_build
     ;;
