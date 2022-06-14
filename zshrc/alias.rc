@@ -33,6 +33,7 @@ function webstorm() {
   open $1 -a WebStorm
 }
 
+
 function vm() {
   case $1 in
     "")
@@ -41,7 +42,7 @@ function vm() {
   ssh couldbe@10.0.0.3 -t "cd $WORKDIR; zsh --login"
     ;;
   r | run)
-    bash local_build/script/run.sh
+      bash local_build/script/run.sh
     ;;
   b | build)
     rm local_build || true
