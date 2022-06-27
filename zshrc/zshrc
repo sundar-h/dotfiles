@@ -114,6 +114,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
+# if [ -z "$INTELLIJ_ENVIRONMENT_READER" ]; then
 source $HOME/data/config/zshrc/general.rc
 source $HOME/data/config/zshrc/path.rc
 source $HOME/data/config/zshrc/sensetime.rc
@@ -122,9 +123,10 @@ source $HOME/data/config/zshrc/alias.rc
 source $HOME/data/config/zshrc/rust.rc
 source $HOME/data/config/zshrc/issue.rc
 source $HOME/.cargo/env
+# fi
 
 # Wasmer
-export WASMER_DIR="/Users/sanghaifa/.wasmer"
-[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
+# export WASMER_DIR="/Users/sanghaifa/.wasmer"
+# [ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
 
 # zprof

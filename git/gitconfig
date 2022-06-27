@@ -7,3 +7,5 @@
 	insteadOf = https://gitlab.bj.sensetime.com
 [url "git@gitlab.sz.sensetime.com:"]
 	insteadOf = https://gitlab.sz.sensetime.com
+[core]
+	excludesFile = /Users/sanghaifa/.gitignore_global

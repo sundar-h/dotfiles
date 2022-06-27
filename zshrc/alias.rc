@@ -47,7 +47,7 @@ function vm() {
   b | build)
     rm local_build || true
     name=`basename ${PWD}`
-    ln -s ${HOME}/data/sensetime/build/${name} local_build
+    ln -s ${HOME}/data/build/${name} local_build
     ;;
   esac
 }
